@@ -1,8 +1,8 @@
 ---
-sidebar_position: 8
+sidebar_position: 7
 ---
 
-# 8. Conditional Rendering
+# 7. Conditional Rendering
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -13,28 +13,41 @@ Maka langkah pertama yang kita lakukan adalah mengirimkan data terkait kondisi t
 
 <br />
 
-<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2/tree/day2-5.conditional-rendering">
+<a class="btn-example-code" href="">
 Contoh code
 </a>
 
 <br />
 <br />
 
-```js {7,12} title="index.js"
-// this code below endpoint root (/)
-app.get('/home', function (req, res) {
-    setHeader(res)
-    res.render('index')
-})
+```js {13} title="index.js"
+// this code same like before
+package main
 
-const isLogin = true
+import (
+    "fmt"
+    "net/http"
 
-app.get('/blog', function (req, res) {
-  setHeader(res)
-  res.render('blog', {
-    isLogin: isLogin
-  })
-})
+    "github.com/gorilla/mux"
+)
+
+var Data = map[string]interface{}{
+    "Title": "Personal Web",
+    "IsLogin": false,
+}
+
+func main() {
+    route := mux.NewRouter()
+    
+    route.HandleFunc("/", helloWorld).Methods("GET")
+    route.HandleFunc("/home", home).Methods("GET")
+    route.HandleFunc("/blog", blogs).Methods("GET")
+    route.HandleFunc("/contact-me", contactMe).Methods("GET")
+
+    fmt.Println("Server running on port 5000")
+    http.ListenAndServe("localhost:5000", route)
+}
+// continuation this code same like before
 ```
 selanjutnya kita akan melakukan pengecakan pada view blog terkait kondisi yang telah dikirimkan secara bersamaan ketika mengirimkan response.
 
@@ -47,7 +60,7 @@ Contoh code
 <br />
 <br />
 
-```html {37,41,48,53} title="blog.hbs"
+```html {37,41,48,53} title="blog.html"
 <html>
 
 <head>
@@ -84,23 +97,23 @@ Contoh code
   <!-- Blog list -->
   <div id="contents" class="blog-list">
     <!-- conditional post blog -->
-    {{#if isLogin}}
+    {{if .Data.IsLogin}}
     <div class="button-group w-100">
       <a href="/add-blog" class="btn-post">Add New Blog</a>
     </div>
-    {{/if}}
+    {{end}}
     <!-- dynamic content would be here -->
     <div class="blog-list-item">
       <div class="blog-image">
         <img src="/public/assets/blog-img.png" alt="Pasar Coding di Indonesia Dinilai Masih Menjanjikan" />
       </div>
       <div class="blog-content">
-        {{#if isLogin}}
+        {{if .Data.IsLogin}}
         <div class="button-group">
           <a class="btn-edit">Edit Post</button>
             <a class="btn-post">Delete Blog</a>
         </div>
-        {{/if}}
+        {{end}}
         <h1>
           <a href="/blog/1" target="_blank">
             Pasar Coding di Indonesia Dinilai Masih Menjanjikan
@@ -132,7 +145,7 @@ Contoh code
 <br />
 
 <div>
-<a class="btn-demo" href="https://ebook-code-result-chapter-2-git-day2-5cond-acf9cd-demo-dumbways.vercel.app/blog">
+<a class="btn-demo" href="">
 Demo
 </a>
 </div>

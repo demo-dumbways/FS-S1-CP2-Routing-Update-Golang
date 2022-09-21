@@ -2,34 +2,73 @@
 sidebar_position: 4
 ---
 
-# 4. Hello World using Node.Js
+# 4. Hello World using Golang
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Setelah adanya file entry point, maka kita bisa melakukan segala proses logika menggunakan file ini. Hal pertama yang akan kita lakukan adalah mengirimkan string `Hello World` kedalam tampilan browser menggunakan Node.js
+Setelah adanya file entry point, maka kita bisa melakukan segala proses logika menggunakan file ini. Hal pertama yang akan kita lakukan adalah mengirimkan string `Hello World` kedalam tampilan browser menggunakan Golang
 
-Mengirimkan sesuati kedalam tampilan browser membutuhkan sebuah `endpoint` yang nantinya akan diakses. **Endpoint** adalah jalur komunikasi yang bisa diakses untuk menampilkan sesuatu sesuai dengan yang dikirimkan.
+Mengirimkan sesuatu kedalam tampilan browser membutuhkan sebuah `endpoint` yang nantinya akan diakses. **Endpoint** adalah jalur komunikasi yang bisa diakses untuk menampilkan sesuatu sesuai dengan yang dikirimkan.
 
 <br/>
-<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2/tree/day1-6.set-endpoint">
+<a class="btn-example-code" href="">
 Contoh code
 </a>
 <br/>
 <br/>
 
-```js {5-7} title="index.js"
-const express = require('express');
+```go {11-17} title="main.go"
+package main
 
-const app = express();
+import (
+    "fmt"
+    "net/http"
 
-app.get('/', function (req, res) {
-  res.send('Hello World');
-});
+    "github.com/gorilla/mux"
+)
 
-const port = 5000;
-app.listen(port, function () {
-  console.debug(`Server running on port ${port}`);
-});
+func main() {
+    route := mux.NewRouter()
+    
+    route.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+      w.Header().Set("Content-Type", "application/json")
+      w.WriteHeader(http.StatusOK)
+      w.Write([]byte("Hello World"))
+    }).Methods("GET")
+
+    fmt.Println("Server running on port 5000")
+    http.ListenAndServe("localhost:5000", route)
+}
+```
+
+:::tip saran
+agar tampak rapi dalam menuliskan code, kita juga bisa memisahkan function yang dieksekusi oleh route kedalam function yang terpisah
+:::
+
+```go {13,19-24} title="main.go"
+package main
+
+import (
+    "fmt"
+    "net/http"
+
+    "github.com/gorilla/mux"
+)
+
+func main() {
+    route := mux.NewRouter()
+    
+    route.HandleFunc("/", helloWorld).Methods("GET")
+
+    fmt.Println("Server running on port 5000")
+    http.ListenAndServe("localhost:5000", route)
+}
+
+func helloWorld(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Hello World!"))
+}
 ```
 
 <img alt="image1" src={useBaseUrl('img/docs/image-1-1.png')} height="500px"/>
@@ -38,7 +77,7 @@ app.listen(port, function () {
 <br />
 
 <div>
-<a class="btn-demo" href="https://ebook-code-result-chapter-2-git-day1-6set-c414f6-demo-dumbways.vercel.app/">
+<a class="btn-demo" href="">
 Demo
 </a>
 </div>
