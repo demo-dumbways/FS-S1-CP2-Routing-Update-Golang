@@ -1,14 +1,14 @@
 ---
-sidebar_position: 12
+sidebar_position: 11
 ---
 
-# 12. Task
+# 11. Task
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## 12.1 Instruksi
 
-Setelah memahami dan mempraktikkan terkait pembuatan routing untuk halaman blog dan contact me, menggunakan method `GET` untuk menampilkan data dan method `POST` untuk menerima inputan dari `req.body.` Maka silahkan implementasikan materi tersebut pada halama Home, Add My Project, Detail Project & Get in Touch. kemudian buatlah fungsi Add My Project dengan menggunakan method `POST` untuk menampilkan Hasil fungsi silakan gunakan alert.
+Setelah memahami dan mempraktikkan terkait pembuatan routing untuk halaman blog dan contact me, menggunakan method `GET` untuk menampilkan data dan method `POST` untuk menerima inputan dari `r.Postform.Get()` Maka silahkan implementasikan materi tersebut pada halama Home, Add My Project, Detail Project & Get in Touch. kemudian buatlah fungsi Add My Project dengan menggunakan method `POST` untuk menampilkan Hasil fungsi silakan gunakan alert.
 
 #### Home
 
