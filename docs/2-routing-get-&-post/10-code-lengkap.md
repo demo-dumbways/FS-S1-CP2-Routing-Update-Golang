@@ -29,6 +29,7 @@ import (
 
 var Data = map[string]interface{}{
 	"Title": "Personal Web",
+	"IsLogin": false,
 }
 
 func main() {
