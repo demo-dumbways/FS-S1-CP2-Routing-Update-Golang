@@ -11,18 +11,19 @@ Membuat routing untuk halaman blog & contact me sama saja seperti yang kita laku
 
 <br />
 
-<a class="btn-example-code" href="">
+<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2-golang/blob/day2-5-routing-for-blog-and-contact/main.go">
 Contoh code
 </a>
 
 <br />
 <br />
 
-```go {19-20,46-72} title="main.go"
+```go {20-21,47-73} title="main.go"
 package main
 
 import (
     "fmt"
+    "html/template"
     "net/http"
 
     "github.com/gorilla/mux"

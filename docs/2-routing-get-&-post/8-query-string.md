@@ -10,17 +10,21 @@ Nama route yang kita gunakan untuk menghandle proses menampilkan blog detail yai
 
 <br />
 
-<a class="btn-example-code" href="">
-Contoh code
-</a>
+```go {4,19} title="main.go"
+import (
+	"fmt"
+	"net/http"
+	"strconv"
+	"text/template"
 
-<br />
-<br />
+	"github.com/gorilla/mux"
+)
 
-```go {8} title="main.go"
 // this code same like before
 func main() {
     route := mux.NewRouter()
+
+	route.PathPrefix("/public/").Handler(http.StripPrefix("/public/", http.FileServer(http.Dir("./public/"))))
     
     route.HandleFunc("/", helloWorld).Methods("GET")
     route.HandleFunc("/home", home).Methods("GET")
@@ -32,13 +36,15 @@ func main() {
     http.ListenAndServe("localhost:5000", route)
 }
 // continuation this code same like before
+
+
 ```
 
 Sementara untuk saat ini kita akan mengirimkan response dalam bentuk konten statis
 
 <br />
 
-<a class="btn-example-code" href="">
+<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2-golang/blob/day2-7-query-string-for-blog-detail/main.go">
 Contoh code
 </a>
 

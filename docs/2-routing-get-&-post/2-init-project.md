@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 2. Introduction Golang using Gorilla/Mux
 
-Hal pertama yang kita lakukan untuk bekerja dengan Node JS adalah membuat file `go.mod` untuk proyek yang dijalankan. Membuat file ini kita bisa memanfaatkan `Go Modules`. **Go Modules** merupakan manajemen dependensi resmi untuk Go. Modules ini diperkenalkan pertama kali di `go1.11` yang telah terinstall secara langsung ketika menginstall Golang.
+Hal pertama yang kita lakukan untuk bekerja dengan Golang adalah membuat file `go.mod` untuk proyek yang dijalankan. Membuat file ini kita bisa memanfaatkan `Go Modules`. **Go Modules** merupakan manajemen dependensi resmi untuk Go. Modules ini diperkenalkan pertama kali di `go1.11` yang telah terinstall secara langsung ketika menginstall Golang.
 
 Modules digunakan untuk menginisialisasi sebuah project, sekaligus melakukan manajemen terhadap 3rd party atau library lain yang dipergunakan. 
 :::info

@@ -12,18 +12,19 @@ Pertama kita akan mencoba membuat routing untuk tampilan home menggunakan metode
 
 <br />
 
-<a class="btn-example-code" href="">
+<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2-golang/blob/day2-3-routing-for-home/main.go">
 Contoh code
 </a>
 
 <br />
 <br />
 
-```go {10-12,18,30-42} title="main.go"
+```go {11-13,19,31-43} title="main.go"
 package main
 
 import (
     "fmt"
+	"html/template"
     "net/http"
 
     "github.com/gorilla/mux"
@@ -81,7 +82,7 @@ Karna kita menggunakan styling external pada views yang tersimpan di folder `pub
 
 <br />
 
-<a class="btn-example-code" href="">
+<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2-golang/blob/day2-4-routing-for-home-fixed/main.go">
 Contoh code
 </a>
 

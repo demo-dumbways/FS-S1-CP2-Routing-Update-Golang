@@ -11,7 +11,7 @@ Setelah adanya file entry point, maka kita bisa melakukan segala proses logika m
 Mengirimkan sesuatu kedalam tampilan browser membutuhkan sebuah `endpoint` yang nantinya akan diakses. **Endpoint** adalah jalur komunikasi yang bisa diakses untuk menampilkan sesuatu sesuai dengan yang dikirimkan.
 
 <br/>
-<a class="btn-example-code" href="">
+<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2-golang/blob/day2-1-hello-world-golang/main.go">
 Contoh code
 </a>
 <br/>
@@ -44,6 +44,13 @@ func main() {
 :::tip saran
 agar tampak rapi dalam menuliskan code, kita juga bisa memisahkan function yang dieksekusi oleh route kedalam function yang terpisah
 :::
+
+<br/>
+<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2-golang/blob/day2-2-hello-world-golang-separated/main.go">
+Contoh code
+</a>
+<br/>
+<br/>
 
 ```go {13,19-24} title="main.go"
 package main

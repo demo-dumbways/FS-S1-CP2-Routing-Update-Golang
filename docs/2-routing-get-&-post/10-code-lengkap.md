@@ -3,11 +3,11 @@ sidebar_position: 10
 ---
 
 # 10. Full Code main.go
-Berikut adalah Full Code pada file `index.js` :
+Berikut adalah Full Code pada file `main.go` :
 
 <br />
 
-<a class="btn-example-code" href="">
+<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2-golang/blob/day2-8-full-code/main.go">
 Contoh code
 </a>
 

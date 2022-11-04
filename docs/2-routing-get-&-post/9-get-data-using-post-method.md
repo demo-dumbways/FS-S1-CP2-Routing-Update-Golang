@@ -8,11 +8,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Pertama kita akan membuat routing untuk tampilan formulir blog menggunakan metode GET
 
-```go {9,19-31} title="main.go"
+```go {11,21-33} title="main.go"
 // this code same like before
 func main() {
     route := mux.NewRouter()
-    
+
+    route.PathPrefix("/public/").Handler(http.StripPrefix("/public/", http.FileServer(http.Dir("./public/"))))
+
     route.HandleFunc("/", helloWorld).Methods("GET")
     route.HandleFunc("/home", home).Methods("GET")
     route.HandleFunc("/blog", blogs).Methods("GET")
@@ -44,15 +46,17 @@ func formBlog(w http.ResponseWriter, r *http.Request) {
 // continuation this code same like before
 ```
 
-Kali ini kita akan menggunakan method `POST`. **Method POST** adalah metode request yang didukung oleh HTTP yang digunakan oleh World Wide Web. Metode HTTP POST mengirimkan data ke server. 
+Kali ini kita akan menggunakan method `POST`. **Method POST** adalah metode request yang didukung oleh HTTP yang digunakan oleh World Wide Web. Metode HTTP POST mengirimkan data ke server.
 
 Hal pertama yang kita lakukan ketika akan menerima data dari client adalah menyiapkan routing endpointnya
 
-```go {10} title="main.go"
+```go {12} title="main.go"
 // this code same like before
 func main() {
     route := mux.NewRouter()
-    
+
+    route.PathPrefix("/public/").Handler(http.StripPrefix("/public/", http.FileServer(http.Dir("./public/"))))
+
     route.HandleFunc("/", helloWorld).Methods("GET")
     route.HandleFunc("/home", home).Methods("GET")
     route.HandleFunc("/blog", blogs).Methods("GET")
@@ -76,7 +80,7 @@ func addBlog(w http.ResponseWriter, r *http.Request) {
 
 selanjutnya kita akan menampilkan data yang kita terima dari formulir blog melalui request kedalam console.
 
-```js
+```go
 func addBlog(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	if err != nil {
@@ -90,7 +94,7 @@ func addBlog(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-Untuk mengambil data dari inputan form, kita menggunakan ` r.PostForm.Get()` diisikan dengan name inputan yang ada pada formulir. Pada formulir name inputannya adalah `title` dan `content` sehingga kita untuk menerima inputannya menggunakan code 
+Untuk mengambil data dari inputan form, kita menggunakan ` r.PostForm.Get()` diisikan dengan name inputan yang ada pada formulir. Pada formulir name inputannya adalah `title` dan `content` sehingga kita untuk menerima inputannya menggunakan code
 
 ```go
 r.PostForm.Get("title")
@@ -100,7 +104,7 @@ dan
 
 ```go
 r.PostForm.Get("content")
-``` 
+```
 
 <img alt="image1" src={useBaseUrl('img/docs/image-2-5.png')} height="500px"/>
 

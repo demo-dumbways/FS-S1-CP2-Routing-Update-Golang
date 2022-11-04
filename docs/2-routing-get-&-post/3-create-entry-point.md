@@ -9,11 +9,6 @@ sidebar_position: 3
 Pada file entry point, kita akan menambahkan code untuk pemanggilan/import `package gorilla/mux` yang sudah diinstal kedalam project kita.
 
 <br/>
-<a class="btn-example-code" href="">
-Contoh code
-</a>
-<br/>
-<br/>
 
 ```go title="main.go"
 package main
@@ -25,11 +20,6 @@ import (
 
 setelah kita import package gorilla/mux, kita membutuhkan sebuah `port` untuk menjalankan project. **Port** adalah mekanisme/jalur yang mengizinkan Golang membuat koneksi dalam menjalankan project kita. Dalam proses pembuatan port ini dan seluruh logic project, kita akan menyimpannya kedalam sebuah `function` default yang diberi nama `main`
 
-<br/>
-<a class="btn-example-code" href="">
-Contoh code
-</a>
-<br/>
 <br/>
 
 ```go {4-5,10-13} title="main.go"

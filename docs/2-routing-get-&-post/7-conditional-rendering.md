@@ -6,27 +6,28 @@ sidebar_position: 7
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-
 **Conditional rendering** dapat menentukan sebuah komponen atau tag html dirender atau tidak pada kondisi tertentu. Pada case ini kita akan membuat conditional rendering untuk button `add new blog, edit,` dan `delete` yang ada pada tampilan blog berdasarkan apakah pengunjung sudah login atau belum.
 
 Maka langkah pertama yang kita lakukan adalah mengirimkan data terkait kondisi telah login atau belum melalui `response` route blog.
 
 <br />
 
-<a class="btn-example-code" href="">
+<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2-golang/blob/day2-6-conditional-rendering/main.go">
 Contoh code
 </a>
 
 <br />
 <br />
 
-```js {13} title="index.js"
+```go {15} title="main.go"
 // this code same like before
 package main
 
 import (
     "fmt"
+    "html/template"
     "net/http"
+
 
     "github.com/gorilla/mux"
 )
@@ -38,7 +39,9 @@ var Data = map[string]interface{}{
 
 func main() {
     route := mux.NewRouter()
-    
+
+    route.PathPrefix("/public/").Handler(http.StripPrefix("/public/", http.FileServer(http.Dir("./public/"))))
+
     route.HandleFunc("/", helloWorld).Methods("GET")
     route.HandleFunc("/home", home).Methods("GET")
     route.HandleFunc("/blog", blogs).Methods("GET")
@@ -49,11 +52,12 @@ func main() {
 }
 // continuation this code same like before
 ```
+
 selanjutnya kita akan melakukan pengecakan pada view blog terkait kondisi yang telah dikirimkan secara bersamaan ketika mengirimkan response.
 
 <br />
 
-<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2/tree/day2-6.blog-conditional-rendering">
+<a class="btn-example-code" href="https://github.com/demo-dumbways/ebook-code-result-chapter-2-golang/blob/day2-6-conditional-rendering/views/blog.html">
 Contoh code
 </a>
 
@@ -97,7 +101,7 @@ Contoh code
   <!-- Blog list -->
   <div id="contents" class="blog-list">
     <!-- conditional post blog -->
-    {{if .Data.IsLogin}}
+    {{if .IsLogin}}
     <div class="button-group w-100">
       <a href="/add-blog" class="btn-post">Add New Blog</a>
     </div>
@@ -108,7 +112,7 @@ Contoh code
         <img src="/public/assets/blog-img.png" alt="Pasar Coding di Indonesia Dinilai Masih Menjanjikan" />
       </div>
       <div class="blog-content">
-        {{if .Data.IsLogin}}
+        {{if .IsLogin}}
         <div class="button-group">
           <a class="btn-edit">Edit Post</button>
             <a class="btn-post">Delete Blog</a>
